@@ -1,4 +1,4 @@
-from Time import Cronometro
+from funcoes import cronometro
 
-tempos = Cronometro()
-tempos.time_sec()
+tempos = cronometro.Inciar()
+tempos.comecar()
