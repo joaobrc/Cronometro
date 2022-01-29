@@ -1,4 +1,5 @@
 from datetime import date
+import time
 
 
 class Data:
@@ -16,15 +17,32 @@ class Data:
         return dia
 
 
+class Inciar:
+
+    @staticmethod
+    def comecar():
+        ok = False
+        while ok == False:
+            valor = input('Quer iniciar o cronometro: ')
+            valor = str(valor)
+            ok = valor.capitalize()
+            if ok == 'Sim':
+                relogio = Cronometro()
+                relogio.time_sec()
+            else:
+                ok = False
+
+
 class Cronometro:
 
-    def __init__(self, tempo):
-        self.tempo = tempo
+    def __init__(self):
+        self.tempo = 0
 
     def time_sec(self):
-        while self.tempo > 0:
+        while self.tempo < 1000:
             m, s = divmod(self.tempo, 60)
             numero_sec = '{:02d}:{:02d}'.format(m, s)
-            self.tempo -= 1
+            self.tempo += 1
+            time.sleep(1)
             print(numero_sec)
         print("00:00")
