@@ -1,6 +1,28 @@
 from datetime import date
+import PySimpleGUI as sg
 import time
 
+
+class windo:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def janela():
+        sg.theme('BlueMono')
+        
+        layout = [[sg.Text("Cronometro")],
+                [sg.Text('Click no botao')],
+                [sg.Button("ok", enable_events=True)]]
+        windonw = sg.Window('Cronometro', layout)
+
+        while True:
+            event, valor = windonw.read()
+            if event == 'ok' or event == sg.WIN_CLOSED:
+                break
+    
+        windonw.close()
+        return event
 
 class Data:
     def __init__(self):
@@ -21,16 +43,12 @@ class Inciar:
 
     @staticmethod
     def comecar():
-        ok = False
-        while ok == False:
-            valor = input('Quer iniciar o cronometro: ')
-            valor = str(valor)
-            ok = valor.capitalize()
-            if ok == 'Sim':
-                relogio = Cronometro()
-                relogio.time_sec()
-            else:
-                ok = False
+        valor = windo.janela()
+        valor = str(valor)
+        if valor:
+            relogio = Cronometro()
+            relogio.time_sec()
+
 
 
 class Cronometro:

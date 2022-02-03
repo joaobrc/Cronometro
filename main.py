@@ -1,4 +1,5 @@
 from funcoes import cronometro
 
-tempos = cronometro.Inciar()
-tempos.comecar()
+janela = cronometro.Inciar.comecar()
+#tempos = cronometro.Inciar()
+#tempos.comecar()
