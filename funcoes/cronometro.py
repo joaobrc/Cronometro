@@ -45,7 +45,7 @@ class Inciar:
     def comecar():
         valor = windo.janela()
         valor = str(valor)
-        if valor:
+        if valor == 'ok':
             relogio = Cronometro()
             relogio.time_sec()
 
