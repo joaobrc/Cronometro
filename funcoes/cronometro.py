@@ -1,7 +1,7 @@
-from datetime import date
-import PySimpleGUI as sg
+from datetime import date, datetime,timedelta
+#import PySimpleGUI as sg
 import time
-
+import os
 
 class windo:
     def __init__(self):
@@ -38,7 +38,6 @@ class Data:
         dia = "Hoje é {}".format(hoje_covertido)
         return dia
 
-
 class Inciar:
 
     @staticmethod
@@ -48,8 +47,6 @@ class Inciar:
         if valor == 'ok':
             relogio = Cronometro()
             relogio.time_sec()
-
-
 
 class Cronometro:
 
@@ -64,3 +61,26 @@ class Cronometro:
             time.sleep(1)
             print(numero_sec)
         print("00:00")
+
+
+class Fecha_Musica:
+    def __init__(self,time,parametro) -> None:
+        
+        self.fecha = Fecha_Musica.paramentros(time=time)[parametro]
+        
+    @classmethod
+    def paramentros(cls,time):
+        parametro={
+            "hora":(datetime.now() + timedelta(hours=time)).isoformat(timespec="minutes"),
+            "minutos":(datetime.now() + timedelta(minutes=time)).isoformat(timespec="minutes"),
+        }
+        return parametro
+    
+
+    def contador(self):
+        agr = False
+        while not agr:
+            self.agora = datetime.now().isoformat(timespec='minutes')
+            if self.fecha == self.agora:
+                os.system("taskkill /im chrome.exe /f")
+                agr = True
